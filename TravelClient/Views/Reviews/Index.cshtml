@@ -1,0 +1,12 @@
+@{
+  ViewData["Title"] = "Reviews";
+}
+
+<h1>All Travel Reviews:</h1>
+
+<ol>
+  @foreach (Review review in Model)
+  {
+    <li><strong>@review.City, @review.Country</strong> by @review.Author | <a href="/Reviews/Details/(review.ReviewId)">View Details</a></li>
+  }
+</ol>
