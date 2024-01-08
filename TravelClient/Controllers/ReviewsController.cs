@@ -25,7 +25,14 @@ public class ReviewsController : Controller
   [HttpPost]
   public ActionResult Create(Review review)
   {
-    Review.Post(review);
-    return RedirectToAction("Index");
+    if (ModelState.IsValid)
+    {
+      Review.Post(review);
+      return RedirectToAction("Index");
+    }
+    else
+    {
+      return RedirectToAction("Create");
+    }
   }
 }
