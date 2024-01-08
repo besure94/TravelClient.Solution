@@ -16,4 +16,16 @@ public class ReviewsController : Controller
     Review review = Review.GetDetails(id);
     return View(review);
   }
+
+  public ActionResult Create()
+  {
+    return View();
+  }
+
+  [HttpPost]
+  public ActionResult Create(Review review)
+  {
+    Review.Post(review);
+    return RedirectToAction("Index");
+  }
 }
