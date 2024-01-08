@@ -32,6 +32,8 @@ namespace TravelClient.Models
       await client.PostAsync(request);
     }
 
+    // PUT method needs updating to work
+
     public static async void Put(int id, string newReview)
     {
       RestClient client = new RestClient("http://localhost:5063/");

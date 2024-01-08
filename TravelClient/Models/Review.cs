@@ -55,6 +55,8 @@ namespace TravelClient.Models
       ApiHelper.Post(jsonReview);
     }
 
+    // PUT method needs updating to work
+
     public static void Put(Review review)
     {
       string jsonReview = JsonConvert.SerializeObject(review);
