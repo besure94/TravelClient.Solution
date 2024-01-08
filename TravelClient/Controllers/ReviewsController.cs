@@ -35,4 +35,17 @@ public class ReviewsController : Controller
       return RedirectToAction("Create");
     }
   }
+
+  public ActionResult Edit(int id)
+  {
+    Review review = Review.GetDetails(id);
+    return View(review);
+  }
+
+  [HttpPost]
+  public ActionResult Edit(Review review)
+  {
+    Review.Put(review);
+    return RedirectToAction("Details", new { id = review.ReviewId });
+  }
 }
