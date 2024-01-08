@@ -10,6 +10,16 @@ namespace TravelClient.Models
       RestClient client = new RestClient("http://localhost:5063/");
       RestRequest request = new RestRequest($"api/reviews", Method.Get);
       RestResponse response = await client.GetAsync(request);
+
+      return response.Content;
+    }
+
+    public static async Task<string> Get(int id)
+    {
+      RestClient client = new RestClient("http://localhost:5063/");
+      RestRequest request = new RestRequest($"api/reviews/{id}", Method.Get);
+      RestResponse response = await client.GetAsync(request);
+
       return response.Content;
     }
   }

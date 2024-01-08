@@ -7,6 +7,6 @@
 <ol>
   @foreach (Review review in Model)
   {
-    <li><strong>@review.City, @review.Country</strong> by @review.Author | <a href="/Reviews/Details/(review.ReviewId)">View Details</a></li>
+    <li><strong>@review.City, @review.Country</strong> by @review.Author | <a href="/Reviews/Details/@(review.ReviewId)">View Details</a></li>
   }
 </ol>
