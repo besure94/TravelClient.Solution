@@ -17,20 +17,14 @@ public class ReviewsController : Controller
   }
 
   [HttpPost]
-  public ActionResult Search(string city, string country)
+  public ActionResult Search(string city, string country, int rating)
   {
-    return RedirectToAction("SearchResults", new { searchedCity = city, searchedCountry = country });
+    return RedirectToAction("SearchResults", new { searchedCity = city, searchedCountry = country, searchedRating = rating });
   }
 
-  public ActionResult SearchResults(string searchedCity, string searchedCountry)
+  public ActionResult SearchResults(string searchedCity, string searchedCountry, int searchedRating)
   {
-    System.Console.WriteLine("-------------");
-    System.Console.WriteLine(searchedCity);
-    System.Console.WriteLine("-------------");
-    System.Console.WriteLine("-------------");
-    System.Console.WriteLine(searchedCountry);
-    System.Console.WriteLine("-------------");
-    List<Review> searchResults = Review.SearchReviews(searchedCity, searchedCountry);
+    List<Review> searchResults = Review.SearchReviews(searchedCity, searchedCountry, searchedRating);
     return View(searchResults);
   }
 
