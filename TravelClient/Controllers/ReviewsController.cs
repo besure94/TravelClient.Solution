@@ -38,16 +38,16 @@ public class ReviewsController : Controller
 
   // PUT method needs updating to work
 
-  public ActionResult Edit(int id)
-  {
-    Review review = Review.GetDetails(id);
-    return View(review);
-  }
+  // public ActionResult Edit(int id)
+  // {
+  //   Review review = Review.GetDetails(id);
+  //   return View(review);
+  // }
 
-  [HttpPost]
-  public ActionResult Edit(Review review)
-  {
-    Review.Put(review);
-    return RedirectToAction("Details", new { id = review.ReviewId });
-  }
+  // [HttpPost]
+  // public ActionResult Edit(Review review)
+  // {
+  //   Review.Put(review);
+  //   return RedirectToAction("Details", new { id = review.ReviewId });
+  // }
 }
