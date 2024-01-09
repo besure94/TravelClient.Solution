@@ -2,27 +2,25 @@
   ViewData["Title"] = "Reviews";
 }
 
-@model TravelClient.Models.Review
-
 <h1>All Travel Reviews:</h1>
 
 <h3>Actions:</h3>
 
 <p>@Html.ActionLink("Add a new review", "Create")</p>
 
-@* <h3>Reviews:</h3>
+<h3>Reviews:</h3>
 <ol>
   @foreach (Review review in Model)
   {
     <li><strong>@review.City, @review.Country</strong> by @review.Author | <a href="/Reviews/Details/@(review.ReviewId)">View Details</a></li>
   }
-</ol> *@
+</ol>
 
-<h3>Filter results by city:</h3>
+@* <h3>Filter results by city:</h3>
 
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.City)
   @Html.TextBoxFor(model => model.City)
   <input type="submit" value="Search reviews by city"/>
-}
+} *@

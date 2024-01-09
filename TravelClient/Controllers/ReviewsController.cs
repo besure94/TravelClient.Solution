@@ -11,13 +11,27 @@ public class ReviewsController : Controller
     return View(reviews);
   }
 
-  public ActionResult FilterReviews(string city)
+  public ActionResult Search()
   {
-    List<Review> reviews = Review.GetReviews();
-    if (city != null)
-    {
-      return Review.Where(review => review.City == city);
-    }
+    return View();
+  }
+
+  [HttpPost]
+  public ActionResult Search(string city, string country)
+  {
+    return RedirectToAction("SearchResults", new { searchedCity = city, searchedCountry = country });
+  }
+
+  public ActionResult SearchResults(string searchedCity, string searchedCountry)
+  {
+    System.Console.WriteLine("-------------");
+    System.Console.WriteLine(searchedCity);
+    System.Console.WriteLine("-------------");
+    System.Console.WriteLine("-------------");
+    System.Console.WriteLine(searchedCountry);
+    System.Console.WriteLine("-------------");
+    List<Review> searchResults = Review.SearchReviews(searchedCity, searchedCountry);
+    return View(searchResults);
   }
 
   public IActionResult Details(int id)

@@ -38,6 +38,17 @@ namespace TravelClient.Models
       return reviewList;
     }
 
+    public static List<Review> SearchReviews(string city, string country)
+    {
+      var apiCallTask = ApiHelper.FilterReviews(city, country);
+      var result = apiCallTask.Result;
+
+      JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
+      List<Review> reviewList = JsonConvert.DeserializeObject<List<Review>>(jsonResponse.ToString());
+
+      return reviewList;
+    }
+
     public static Review GetDetails(int id)
     {
       var apiCallTask = ApiHelper.Get(id);
@@ -61,6 +72,11 @@ namespace TravelClient.Models
     {
       string jsonReview = JsonConvert.SerializeObject(review);
       ApiHelper.Put(review.ReviewId, jsonReview);
+    }
+
+    internal static List<Review> Where(Func<object, bool> value)
+    {
+      throw new NotImplementedException();
     }
   }
 }
