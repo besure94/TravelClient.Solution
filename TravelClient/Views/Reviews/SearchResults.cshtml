@@ -12,12 +12,12 @@
 }
 else
 {
-  <ul>
+  <ol>
     @foreach (Review review in Model)
     {
       <li><strong>@review.City, @review.Country</strong> by @review.Author | <a href="/Reviews/Details/@(review.ReviewId)">View Details</a></li>
     }
-  </ul>
+  </ol>
 }
 
 <p>@Html.ActionLink("Back to search page", "Search")</p>

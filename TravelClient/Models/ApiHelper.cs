@@ -14,10 +14,10 @@ namespace TravelClient.Models
       return response.Content;
     }
 
-    public static async Task<string> FilterReviews(string city, string country, int rating)
+    public static async Task<string> FilterReviews(string city, string country, int rating, string random)
     {
       RestClient client = new RestClient("http://localhost:5063/");
-      RestRequest request = new RestRequest($"api/reviews", Method.Get).AddParameter("city", city).AddParameter("country", country).AddParameter("rating", rating);
+      RestRequest request = new RestRequest($"api/reviews", Method.Get).AddParameter("city", city).AddParameter("country", country).AddParameter("rating", rating).AddParameter("random", random);
       RestResponse response = await client.GetAsync(request);
 
       return response.Content;

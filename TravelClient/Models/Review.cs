@@ -38,9 +38,9 @@ namespace TravelClient.Models
       return reviewList;
     }
 
-    public static List<Review> SearchReviews(string city, string country, int rating)
+    public static List<Review> SearchReviews(string city, string country, int rating, string random)
     {
-      var apiCallTask = ApiHelper.FilterReviews(city, country, rating);
+      var apiCallTask = ApiHelper.FilterReviews(city, country, rating, random);
       var result = apiCallTask.Result;
 
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
