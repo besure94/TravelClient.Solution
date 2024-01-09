@@ -11,6 +11,15 @@ public class ReviewsController : Controller
     return View(reviews);
   }
 
+  public ActionResult FilterReviews(string city)
+  {
+    List<Review> reviews = Review.GetReviews();
+    if (city != null)
+    {
+      return Review.Where(review => review.City == city);
+    }
+  }
+
   public IActionResult Details(int id)
   {
     Review review = Review.GetDetails(id);

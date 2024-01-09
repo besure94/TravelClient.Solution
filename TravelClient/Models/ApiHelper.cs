@@ -8,7 +8,7 @@ namespace TravelClient.Models
     public static async Task<string> GetAll()
     {
       RestClient client = new RestClient("http://localhost:5063/");
-      RestRequest request = new RestRequest($"api/reviews", Method.Get);
+      RestRequest request = new RestRequest($"api/reviews").AddParameter("city", "country");
       RestResponse response = await client.GetAsync(request);
 
       return response.Content;
