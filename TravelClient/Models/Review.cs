@@ -66,17 +66,11 @@ namespace TravelClient.Models
       ApiHelper.Post(jsonReview);
     }
 
-    // PUT method needs updating to work
-
     public static void Put(Review review)
     {
       string jsonReview = JsonConvert.SerializeObject(review);
-      ApiHelper.Put(review.ReviewId, jsonReview);
+      ApiHelper.Put(review.ReviewId, review.Author, jsonReview);
     }
 
-    internal static List<Review> Where(Func<object, bool> value)
-    {
-      throw new NotImplementedException();
-    }
   }
 }

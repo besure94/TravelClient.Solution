@@ -53,8 +53,6 @@ public class ReviewsController : Controller
     }
   }
 
-  // PUT method needs updating to work
-
   public ActionResult Edit(int id)
   {
     Review review = Review.GetDetails(id);

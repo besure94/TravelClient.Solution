@@ -41,12 +41,10 @@ namespace TravelClient.Models
       await client.PostAsync(request);
     }
 
-    // PUT method needs updating to work
-
-    public static async void Put(int id, string newReview)
+    public static async void Put(int id, string author, string newReview)
     {
       RestClient client = new RestClient("http://localhost:5063/");
-      RestRequest request = new RestRequest($"api/reviews/{id}", Method.Put);
+      RestRequest request = new RestRequest($"api/reviews/{id}?author={author}", Method.Put);
       request.AddHeader("Content-Type", "application/json");
       request.AddJsonBody(newReview);
       await client.PutAsync(request);

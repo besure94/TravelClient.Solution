@@ -15,7 +15,7 @@
   @Html.TextBoxFor(model => model.Country)
   <br>
   @Html.LabelFor(model => model.Rating)
-  @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @type="number", @min="0", @max="10", @defaultValue="0"}})
+  @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @type="number", @min="0", @max="10"}})
   <br>
   <input type="submit" value="Search reviews" class="btn btn-primary"/>
 }
