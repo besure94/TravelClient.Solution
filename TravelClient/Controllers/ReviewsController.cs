@@ -65,4 +65,17 @@ public class ReviewsController : Controller
     Review.Put(review);
     return RedirectToAction("Details", new { id = review.ReviewId });
   }
+
+  public ActionResult Delete(int id)
+  {
+    Review review = Review.GetDetails(id);
+    return View(review);
+  }
+
+  [HttpPost, ActionName("Delete")]
+  public ActionResult DeleteConfirmed(int id)
+  {
+    Review.Delete(id);
+    return RedirectToAction("Index");
+  }
 }

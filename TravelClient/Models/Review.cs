@@ -72,5 +72,10 @@ namespace TravelClient.Models
       ApiHelper.Put(review.ReviewId, review.Author, jsonReview);
     }
 
+    public static void Delete(int id)
+    {
+      ApiHelper.Delete(id);
+    }
+
   }
 }
