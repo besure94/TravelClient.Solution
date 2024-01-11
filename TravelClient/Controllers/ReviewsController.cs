@@ -53,11 +53,11 @@ public class ReviewsController : Controller
     }
   }
 
-  // public ActionResult Edit(int id)
-  // {
-  //   Review review = Review.GetDetails(id);
-  //   return View(review);
-  // }
+  public ActionResult Edit(int id)
+  {
+    Review review = Review.GetDetails(id);
+    return View(review);
+  }
 
   [HttpPost]
   public ActionResult Edit(Review review)
