@@ -1,0 +1,25 @@
+@{
+  ViewData["Title"] = "Search Reviews";
+}
+
+@model TravelClient.Models.Review
+
+<h1>Search for reviews by different criteria</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.City)
+  @Html.TextBoxFor(model => model.City)
+  <br>
+  @Html.LabelFor(model => model.Country)
+  @Html.TextBoxFor(model => model.Country)
+  <br>
+  @Html.LabelFor(model => model.Rating)
+  @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @type="number", @min="0", @max="10"}})
+  <br>
+  <input type="submit" value="Search reviews" class="btn btn-primary"/>
+}
+
+<br>
+<p>@Html.ActionLink("Back to home page", "Index", "Home")</p>
+

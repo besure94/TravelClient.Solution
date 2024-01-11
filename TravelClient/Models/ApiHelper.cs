@@ -14,6 +14,15 @@ namespace TravelClient.Models
       return response.Content;
     }
 
+    public static async Task<string> FilterReviews(string city, string country, int rating, string random)
+    {
+      RestClient client = new RestClient("http://localhost:5063/");
+      RestRequest request = new RestRequest($"api/reviews", Method.Get).AddParameter("city", city).AddParameter("country", country).AddParameter("rating", rating).AddParameter("random", random);
+      RestResponse response = await client.GetAsync(request);
+
+      return response.Content;
+    }
+
     public static async Task<string> Get(int id)
     {
       RestClient client = new RestClient("http://localhost:5063/");
@@ -32,15 +41,21 @@ namespace TravelClient.Models
       await client.PostAsync(request);
     }
 
-    // PUT method needs updating to work
+    public static async void Put(int id, string newReview)
+    {
+      RestClient client = new RestClient("http://localhost:5063/");
+      RestRequest request = new RestRequest($"api/reviews/{id}", Method.Put);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(newReview);
+      await client.PutAsync(request);
+    }
 
-    // public static async void Put(int id, string newReview)
-    // {
-    //   RestClient client = new RestClient("http://localhost:5063/");
-    //   RestRequest request = new RestRequest($"api/reviews/{id}", Method.Put);
-    //   request.AddHeader("Content-Type", "application/json");
-    //   request.AddJsonBody(newReview);
-    //   await client.PutAsync(request);
-    // }
+    public static async void Delete(int id)
+    {
+      RestClient client = new RestClient("http://localhost:5063/");
+      RestRequest request = new RestRequest($"api/reviews/{id}", Method.Delete);
+      request.AddHeader("Content-Type", "application/json");
+      await client.DeleteAsync(request);
+    }
   }
 }

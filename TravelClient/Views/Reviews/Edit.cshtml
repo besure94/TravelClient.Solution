@@ -6,6 +6,8 @@
 
 <h4>Edit @Model.City, @Model.Country by @Model.Author</h4>
 
+<p><strong>Note: all fields are required to edit a review.</strong></p>
+
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.ReviewId)
@@ -19,7 +21,7 @@
   @Html.TextBoxFor(model => model.Message, new { @Value = @Model.Message })
   <br>
   @Html.LabelFor(model => model.Rating)
-  @Html.TextBoxFor(model => model.Rating, new { @Value = @Model.Rating })
+  @Html.EditorFor(model => model.Rating, new { @Value = @Model.Rating, htmlAttributes = new { @type="number", @min="0", @max="10"}})
   <br>
   @Html.LabelFor(model => model.Author)
   @Html.TextBoxFor(model => model.Author, new { @Value = @Model.Author })

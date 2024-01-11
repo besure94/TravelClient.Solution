@@ -38,6 +38,17 @@ namespace TravelClient.Models
       return reviewList;
     }
 
+    public static List<Review> SearchReviews(string city, string country, int rating, string random)
+    {
+      var apiCallTask = ApiHelper.FilterReviews(city, country, rating, random);
+      var result = apiCallTask.Result;
+
+      JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
+      List<Review> reviewList = JsonConvert.DeserializeObject<List<Review>>(jsonResponse.ToString());
+
+      return reviewList;
+    }
+
     public static Review GetDetails(int id)
     {
       var apiCallTask = ApiHelper.Get(id);
@@ -55,12 +66,16 @@ namespace TravelClient.Models
       ApiHelper.Post(jsonReview);
     }
 
-    // PUT method needs updating to work
+    public static void Put(Review review)
+    {
+      string jsonReview = JsonConvert.SerializeObject(review);
+      ApiHelper.Put(review.ReviewId, jsonReview);
+    }
 
-    // public static void Put(Review review)
-    // {
-    //   string jsonReview = JsonConvert.SerializeObject(review);
-    //   ApiHelper.Put(review.ReviewId, jsonReview);
-    // }
+    public static void Delete(int id)
+    {
+      ApiHelper.Delete(id);
+    }
+
   }
 }
