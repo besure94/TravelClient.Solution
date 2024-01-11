@@ -6,6 +6,8 @@
 
 <h4>Edit @Model.City, @Model.Country by @Model.Author</h4>
 
+<p><strong>Note: all fields are required to edit a review.</strong></p>
+
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.ReviewId)

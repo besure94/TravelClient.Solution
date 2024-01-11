@@ -69,7 +69,7 @@ namespace TravelClient.Models
     public static void Put(Review review)
     {
       string jsonReview = JsonConvert.SerializeObject(review);
-      ApiHelper.Put(review.ReviewId, review.Author, jsonReview);
+      ApiHelper.Put(review.ReviewId, jsonReview);
     }
 
     public static void Delete(int id)

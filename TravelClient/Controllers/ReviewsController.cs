@@ -62,8 +62,16 @@ public class ReviewsController : Controller
   [HttpPost]
   public ActionResult Edit(Review review)
   {
-    Review.Put(review);
-    return RedirectToAction("Details", new { id = review.ReviewId });
+    if (ModelState.IsValid)
+    {
+      Review.Put(review);
+      return RedirectToAction("Details", new { id = review.ReviewId });
+    }
+    else
+    {
+      return RedirectToAction("Edit");
+    }
+
   }
 
   public ActionResult Delete(int id)
